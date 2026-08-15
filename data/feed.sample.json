@@ -1,0 +1,53 @@
+[
+  {
+    "sku": "B0EXAMPLE01",
+    "title": "Noise Cancelling Over-Ear Headphones",
+    "brand": "Acme Audio",
+    "price": 199.0,
+    "listPrice": 249.0,
+    "category": "electronics",
+    "images": [
+      "https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=900&auto=format&fit=crop"
+    ],
+    "description": "Over-ear headphones with adaptive noise cancellation and 40 hours of battery life.",
+    "bullets": [
+      "Adaptive active noise cancellation",
+      "40-hour battery, USB-C fast charge",
+      "Bluetooth 5.3 with multipoint pairing"
+    ],
+    "variants": ["Charcoal", "Ivory"],
+    "variantLabel": "Color",
+    "inStock": true
+  },
+  {
+    "sku": "B0EXAMPLE02",
+    "title": "Linen Blend Relaxed Shirt",
+    "brand": "Northwind",
+    "price": 49.0,
+    "listPrice": 69.0,
+    "category": "apparel",
+    "images": [
+      "https://images.unsplash.com/photo-1541101767792-f9b2b1c4f127?q=80&w=900&auto=format&fit=crop"
+    ],
+    "description": "A breathable linen-blend shirt with a relaxed fit and curved hem.",
+    "bullets": ["55% linen, 45% cotton", "Relaxed fit", "Machine wash cold"],
+    "variants": ["XS", "S", "M", "L", "XL"],
+    "variantLabel": "Size",
+    "inStock": true
+  },
+  {
+    "sku": "B0EXAMPLE03",
+    "title": "Solid Oak Coffee Table",
+    "brand": "Fabrikam",
+    "price": 329.0,
+    "category": "furniture",
+    "images": [
+      "https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?q=80&w=900&auto=format&fit=crop"
+    ],
+    "description": "A solid oak coffee table with a hand-rubbed oil finish.",
+    "bullets": ["Solid FSC-certified oak", "Hand-rubbed oil finish", "Assembly in 15 minutes"],
+    "variants": ["Natural Oak", "Walnut"],
+    "variantLabel": "Finish",
+    "inStock": true
+  }
+]

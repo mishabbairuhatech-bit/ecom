@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@theme {
+  --color-clay: #514f45;
+  --color-clay-dark: #3e3c34;
+  --color-cream: #f5f2ec;
+  --color-linen: #eae5dc;
+  --color-ink: #2e2c27;
+  --color-stone: #767268;
+  --color-sand: #d8d2c6;
+  --font-serif: var(--font-cormorant);
+  --font-sans: var(--font-jost);
+  --font-script: var(--font-script);
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-ink);
+  font-family: var(--font-jost), sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Elegant letterspaced serif display text, as in the mockup */
+.display-serif {
+  font-family: var(--font-cormorant), serif;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.eyebrow {
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6875rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 0.875rem 2.25rem;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-dark {
+  background: var(--color-clay);
+  color: #fff;
+}
+.btn-dark:hover {
+  background: var(--color-clay-dark);
+}
+
+.btn-light {
+  background: #fff;
+  color: var(--color-ink);
+}
+.btn-light:hover {
+  background: var(--color-cream);
+}
+
+.btn-outline {
+  border: 1px solid var(--color-clay);
+  color: var(--color-clay);
+  background: transparent;
+}
+.btn-outline:hover {
+  background: var(--color-clay);
+  color: #fff;
+}
+
+/* Form inputs */
+.input {
+  width: 100%;
+  border: 1px solid var(--color-sand);
+  background: #fff;
+  padding: 0.8rem 1rem;
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+.input:focus {
+  border-color: var(--color-clay);
+}
+.input::placeholder {
+  color: #a49f93;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.link-underline {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: opacity 0.2s ease;
+}
+.link-underline:hover {
+  opacity: 0.6;
+}
