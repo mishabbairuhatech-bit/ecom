@@ -73,7 +73,7 @@ export default function Header() {
       <>
         {/* Utility bar */}
         <div className="hidden md:block bg-[#f5f5f5] relative z-50">
-          <div className="mx-auto max-w-[1400px] px-5 lg:px-10 h-9 flex items-center justify-end gap-4 text-xs text-ink">
+          <div className="mx-auto max-w-[1920px] px-6 lg:px-32 h-9 flex items-center justify-end gap-4 text-xs text-ink">
             <Link href="/about" className="hover:opacity-60 transition-opacity">Help</Link>
             <span className="text-black/25">|</span>
             <Link href="/register" className="hover:opacity-60 transition-opacity">Sign Up</Link>
@@ -89,7 +89,7 @@ export default function Header() {
               : "relative bg-white text-ink"
           } z-40 transition-colors duration-300`}
         >
-          <div className="mx-auto max-w-[1400px] px-5 lg:px-10">
+          <div className="mx-auto max-w-[1920px] px-6 lg:px-32">
             <div className="flex items-center justify-between h-16 gap-6">
               {/* Logo — left */}
               <div className="flex items-center gap-4">
@@ -168,7 +168,7 @@ export default function Header() {
             : "relative bg-white text-ink border-b border-black/5"
         } z-40 transition-colors duration-300`}
       >
-        <div className="mx-auto max-w-[1400px] px-5 lg:px-10">
+        <div className="mx-auto max-w-[1920px] px-6 lg:px-32">
           <div className="grid grid-cols-[1fr_auto_1fr] items-center h-16">
             {/* Left nav */}
             <nav className="hidden lg:flex items-center gap-7">

@@ -2,28 +2,25 @@ import Link from "next/link";
 import { products } from "@/lib/products";
 import ProductCard from "@/components/ProductCard";
 import ShopFilters from "@/components/ShopFilters";
+import MobileFilterBar from "@/components/MobileFilterBar";
 import StickySidebar from "@/components/StickySidebar";
 
 export type ShopParams = {
   category?: string;
   sort?: string;
-  price?: string;
+  min?: string;
+  max?: string;
   stock?: string;
   sale?: string;
   q?: string;
 };
 
-const inBucket = (price: number, bucket: string) => {
-  if (bucket === "under100") return price < 100;
-  if (bucket === "100-500") return price >= 100 && price < 500;
-  if (bucket === "500-2000") return price >= 500 && price < 2000;
-  if (bucket === "over2000") return price >= 2000;
-  return false;
-};
-
 /**
  * The full shop screen — filter sidebar, sort bar and product grid.
  * Used by /shop (browsing) and /search (same screen filtered by ?q=…).
+ *
+ * Desktop keeps the filter rail alongside the grid; mobile collapses it behind
+ * a "Filter" pill that opens a full-screen sheet.
  */
 export default function ShopView({
   params,
@@ -35,13 +32,13 @@ export default function ShopView({
   const {
     category = "all",
     sort,
-    price: priceParam,
+    min: minParam,
+    max: maxParam,
     stock: stockParam,
     sale: saleParam,
     q,
   } = params;
 
-  const price = priceParam ? priceParam.split(",").filter(Boolean) : [];
   const stock = stockParam ? stockParam.split(",").filter(Boolean) : [];
   const sale = saleParam === "1";
   const query = q?.trim().toLowerCase() ?? "";
@@ -56,8 +53,18 @@ export default function ShopView({
         p.category.includes(query) ||
         p.description.toLowerCase().includes(query)
     );
-  if (price.length)
-    list = list.filter((p) => price.some((b) => inBucket(p.price, b)));
+
+  // Slider bounds track the scope the shopper is in, so the track always spans
+  // real prices — $45–$925,000 across the whole store, far less in a category.
+  const scoped = list.map((p) => p.price);
+  const bounds = {
+    min: scoped.length ? Math.floor(Math.min(...scoped)) : 0,
+    max: scoped.length ? Math.ceil(Math.max(...scoped)) : 0,
+  };
+  const min = Number(minParam ?? bounds.min);
+  const max = Number(maxParam ?? bounds.max);
+
+  list = list.filter((p) => p.price >= min && p.price <= max);
   if (stock.length)
     list = list.filter((p) => stock.includes(p.soldOut ? "out" : "in"));
   if (sale) list = list.filter((p) => p.compareAt !== undefined);
@@ -69,13 +76,29 @@ export default function ShopView({
     const sp = new URLSearchParams();
     if (q) sp.set("q", q);
     if (category !== "all") sp.set("category", category);
-    if (price.length) sp.set("price", price.join(","));
+    if (min > bounds.min) sp.set("min", String(min));
+    if (max < bounds.max) sp.set("max", String(max));
     if (stock.length) sp.set("stock", stock.join(","));
     if (sale) sp.set("sale", "1");
     if (key) sp.set("sort", key);
     const qs = sp.toString();
     return qs ? `${basePath}?${qs}` : basePath;
   };
+
+  const filters = (variant: "sidebar" | "sheet") => (
+    <ShopFilters
+      category={category}
+      stock={stock}
+      sale={sale}
+      sort={sort}
+      bounds={bounds}
+      min={min}
+      max={max}
+      basePath={basePath}
+      q={q}
+      variant={variant}
+    />
+  );
 
   return (
     <div className="bg-white">
@@ -85,21 +108,17 @@ export default function ShopView({
             chains into the page scroll and the product list continues. */}
         <div className="grid grid-cols-1 lg:grid-cols-[240px_1fr] gap-8 items-start">
           {/* Filter sidebar — scrolls with the page, pins once its end shows */}
-          <StickySidebar className="lg:sticky">
-            <ShopFilters
-              category={category}
-              price={price}
-              stock={stock}
-              sale={sale}
-              sort={sort}
-              basePath={basePath}
-              q={q}
-            />
+          <StickySidebar className="hidden lg:block lg:sticky">
+            {filters("sidebar")}
           </StickySidebar>
 
           {/* Products */}
           <div>
-            <div className="lg:sticky lg:top-16 z-20 bg-white flex flex-wrap items-center justify-between gap-5 mb-5 border-b border-black/5 pt-1 pb-4">
+            <MobileFilterBar count={list.length}>
+              {filters("sheet")}
+            </MobileFilterBar>
+
+            <div className="hidden lg:sticky lg:top-16 z-20 bg-white lg:flex flex-wrap items-center justify-between gap-5 mb-5 border-b border-black/5 pt-1 pb-4">
               <p className="eyebrow text-stone">
                 {list.length} product{list.length === 1 ? "" : "s"}
                 {query && (

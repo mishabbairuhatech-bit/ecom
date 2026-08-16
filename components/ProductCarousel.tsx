@@ -60,7 +60,7 @@ export default function ProductCarousel({
           <div className="snap-start shrink-0 w-[62%] sm:w-[42%] md:w-[30%] lg:w-[23%] xl:w-[19%]">
             <Link
               href={viewMoreHref}
-              className="group flex aspect-[3/4] flex-col items-center justify-center gap-4 bg-linen hover:bg-cream transition-colors"
+              className="group flex aspect-[4/5] flex-col items-center justify-center gap-4 bg-linen hover:bg-cream transition-colors"
             >
               <span className="w-12 h-12 flex items-center justify-center border border-ink/30 rounded-full text-ink transition-transform duration-300 group-hover:translate-x-1">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">

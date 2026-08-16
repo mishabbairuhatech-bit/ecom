@@ -11,7 +11,7 @@ export default function Footer() {
     <footer className="bg-clay text-white/80 mt-0">
       {/* Newsletter */}
       <div className="border-b border-white/10">
-        <div className="mx-auto max-w-[1400px] px-5 lg:px-10 py-4 lg:py-5 text-center">
+        <div className="mx-auto max-w-[1920px] px-6 lg:px-14 py-4 lg:py-5 text-center">
           <h3 className="display-serif text-2xl text-white mb-2">Stay in touch</h3>
           <p className="text-sm font-light mb-5 max-w-md mx-auto">
             Sign up for early access to new collections, private sales and 10% off
@@ -44,7 +44,7 @@ export default function Footer() {
       </div>
 
       {/* Link columns */}
-      <div className="mx-auto max-w-[1400px] px-5 lg:px-10 py-4 lg:py-5 grid grid-cols-2 md:grid-cols-4 gap-10">
+      <div className="mx-auto max-w-[1920px] px-6 lg:px-14 py-4 lg:py-5 grid grid-cols-2 md:grid-cols-4 gap-10">
         <div>
           <span className="text-4xl text-white [font-family:var(--font-script)]">luxe</span>
           <p className="text-sm font-light mt-4 max-w-[220px]">
@@ -85,7 +85,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="mx-auto max-w-[1400px] px-5 lg:px-10 py-4 lg:py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-light text-white/50">
+        <div className="mx-auto max-w-[1920px] px-6 lg:px-14 py-4 lg:py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-light text-white/50">
           <span>© 2026 Luxe. All rights reserved.</span>
           <span>Visa · Mastercard · Amex · PayPal · Apple Pay</span>
         </div>
