@@ -3,7 +3,6 @@ import { products } from "@/lib/products";
 import ProductCard from "@/components/ProductCard";
 import ShopFilters from "@/components/ShopFilters";
 import MobileFilterBar from "@/components/MobileFilterBar";
-import StickySidebar from "@/components/StickySidebar";
 
 export type ShopParams = {
   category?: string;
@@ -103,14 +102,12 @@ export default function ShopView({
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-[1400px] px-5 lg:px-10 py-4">
-        {/* Nike-style listing: the page scrolls as one. The sidebar is sticky
-            with its own internal scroll — once it reaches its end, the wheel
-            chains into the page scroll and the product list continues. */}
         <div className="grid grid-cols-1 lg:grid-cols-[240px_1fr] gap-8 items-start">
-          {/* Filter sidebar — scrolls with the page, pins once its end shows */}
-          <StickySidebar className="hidden lg:block lg:sticky">
+          {/* Filter rail — pinned below the header with its own scroll, so the
+              product grid and the filters move independently. */}
+          <div className="hidden lg:block lg:sticky lg:top-20 lg:h-[calc(100vh-6rem)] lg:overflow-y-auto lg:pr-1">
             {filters("sidebar")}
-          </StickySidebar>
+          </div>
 
           {/* Products */}
           <div>

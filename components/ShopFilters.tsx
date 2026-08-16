@@ -141,17 +141,14 @@ export default function ShopFilters({
 
   return (
     <aside className={sheet ? "" : "lg:border-r lg:border-black/5 lg:pr-8"}>
-      {!sheet && (
-        <div className="flex items-baseline justify-between border-b border-black/10 pb-4">
-          <h2 className="text-xl font-medium text-ink">Filters</h2>
-          {hasFilters && (
-            <Link
-              href={q ? `${basePath}?q=${encodeURIComponent(q)}` : basePath}
-              className="text-xs text-stone underline underline-offset-2 hover:opacity-60"
-            >
-              Clear All
-            </Link>
-          )}
+      {!sheet && hasFilters && (
+        <div className="flex justify-end pb-4 border-b border-black/10">
+          <Link
+            href={q ? `${basePath}?q=${encodeURIComponent(q)}` : basePath}
+            className="text-xs text-stone underline underline-offset-2 hover:opacity-60"
+          >
+            Clear All
+          </Link>
         </div>
       )}
 
